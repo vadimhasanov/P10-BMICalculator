@@ -1,0 +1,38 @@
+import tkinter as tk
+
+# BMI hesaplama fonksiyonu
+def calculate_bmi():
+    try:
+        kilo = float(entry_kilo.get())
+        boy = float(entry_boy.get())
+        bmi = kilo / (boy ** 2)
+        label_sonuc.config(text="Vücut Kitle İndeksiniz (BMI): {:.2f}".format(bmi))
+    except ValueError:
+        label_sonuc.config(text="Hatalı giriş! Lütfen geçerli sayıları girin.")
+
+# Ana tkinter penceresi oluşturma
+root = tk.Tk()
+root.title("BMI Hesaplayıcı")
+
+# Kullanıcıdan kilo girişi
+label_kilo = tk.Label(root, text="Kilo (kg):")
+label_kilo.pack()
+entry_kilo = tk.Entry(root)
+entry_kilo.pack()
+
+# Kullanıcıdan boy girişi
+label_boy = tk.Label(root, text="Boy (m):")
+label_boy.pack()
+entry_boy = tk.Entry(root)
+entry_boy.pack()
+
+# Hesaplama düğmesi
+calculate_button = tk.Button(root, text="Hesapla", command=calculate_bmi)
+calculate_button.pack()
+
+# Sonuç etiketi
+label_sonuc = tk.Label(root, text="")
+label_sonuc.pack()
+
+# Tkinter döngüsünü başlatma
+root.mainloop()
